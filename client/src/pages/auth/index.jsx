@@ -16,6 +16,8 @@ const Auth = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+
+
   const validateLogin = () => {
     if (!email.length) {
       toast.error("Email is required.");
@@ -27,6 +29,8 @@ const Auth = () => {
     }
     return true;
   };
+
+
   const validateSignup = () => {
     if (!email.length) {
       toast.error("Email is required.");
@@ -42,6 +46,8 @@ const Auth = () => {
     }
     return true;
   };
+
+  
   const handleLogin = async () => {
     try {
       if (validateLogin()) {

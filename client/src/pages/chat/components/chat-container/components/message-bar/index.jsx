@@ -41,7 +41,7 @@ const MessageBar = () => {
   const handleMessageChange = (event) => {
     setMessage(event.target.value);
   };
-
+   
   const handleSendMessage = async () => {
     if (selectedChatType === "contact") {
       socket.emit("sendMessage", {
@@ -73,13 +73,14 @@ const MessageBar = () => {
         const formData = new FormData();
         formData.append("file", file);
         setIsUploading(true);
+        // 
         const response = await apiClient.post(UPLOAD_FILE, formData, {
           withCredentials: true,
           onUploadProgress: (data) => {
             setFileUploadProgress(Math.round((100 * data.loaded) / data.total));
           },
         });
-
+        //  
         if (response.status === 200 && response.data) {
           setIsUploading(false);
           if (selectedChatType === "contact") {

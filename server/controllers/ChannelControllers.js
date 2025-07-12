@@ -9,14 +9,15 @@ export const createChannel = async (request, response, next) => {
     const admin = await User.findById(userId);
     if (!admin) {
       return response.status(400).json({ message: "Admin user not found." });
-    }
-
+    } 
+    
     const validMembers = await User.find({ _id: { $in: members } });
     if (validMembers.length !== members.length) {
       return response
         .status(400)
         .json({ message: "Some members are not valid users." });
     }
+
 
     const newChannel = new Channel({
       name,

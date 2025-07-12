@@ -14,6 +14,7 @@ export const SocketProvider = ({ children }) => {
   const { userInfo } = useAppStore();
 
   useEffect(() => {
+
     if (userInfo) {
       socket.current = io(SOCKET_HOST, {
         withCredentials: true,
@@ -25,6 +26,7 @@ export const SocketProvider = ({ children }) => {
 
       const handleReceiveMessage = (message) => {
         // Access the latest state values
+        
         const {
           selectedChatData: currentChatData,
           selectedChatType: currentChatType,

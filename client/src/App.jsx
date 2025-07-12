@@ -25,6 +25,7 @@ const AuthRoute = ({ children }) => {
 };
 
 function App() {
+  
   const { userInfo, setUserInfo } = useAppStore();
   const [loading, setLoading] = useState(true);
 

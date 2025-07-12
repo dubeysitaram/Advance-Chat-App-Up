@@ -7,6 +7,8 @@ import {
   updateProfile,
   addProfileImage,
   removeProfileImage,
+
+  
  
 } from "../controllers/AuthController.js";
 import { verifyToken } from "../middlewares/AuthMiddleware.js";
@@ -24,10 +26,10 @@ authRoutes.post("/update-profile", verifyToken, updateProfile);
 authRoutes.post(
   "/add-profile-image",
   verifyToken,
-  upload.single("profile-image"),
+  upload.single("profile-image"), // adds file to the req.file
   addProfileImage
 );
-authRoutes.get("/onlyinfo", verifyToken);
+
 
 
 authRoutes.delete("/remove-profile-image", verifyToken, removeProfileImage);

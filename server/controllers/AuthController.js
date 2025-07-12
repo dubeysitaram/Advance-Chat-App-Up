@@ -16,6 +16,7 @@ export const signup = async (req, res, next) => {
     const { email, password } = req.body;
     if (email && password) {
       const user = await User.create({ email, password });
+      // cookie name is jwt 
       res.cookie("jwt", createToken(email, user.id), {
         maxAge,
         secure: true,
@@ -58,6 +59,7 @@ export const login = async (req, res, next) => {
         secure: true,
         sameSite: "None",
       });
+      
       return res.status(200).json({
         user: {
           id: user?.id,
@@ -75,6 +77,7 @@ export const login = async (req, res, next) => {
     return res.status(500).send("Internal Server Error");
   }
 };
+
 
 export const getUserInfo = async (request, response, next) => {
   try {
@@ -207,3 +210,4 @@ export const removeProfileImage = async (request, response, next) => {
     return response.status(500).send("Internal Server Error.");
   }
 };
+

@@ -32,7 +32,7 @@ const userSchema = new mongoose.Schema({
     required: false,
   },
 });
-
+// pre is a middelware provided by mongo db , which runds the fucntion brfore saving hte data 
 userSchema.pre("save", async function (next) {
   const salt = await bcrypt.genSalt();
   this.password = await bcrypt.hash(this.password, salt);

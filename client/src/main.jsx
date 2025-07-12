@@ -4,7 +4,7 @@ import App from "./App.jsx";
 import { Toaster } from "@/components/ui/sonner";
 
 import "./index.css";
-import { SocketProvider } from "./contexts/SocketContext";
+import { SocketProvider } from "./contexts/SocketContext.jsx";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <SocketProvider>

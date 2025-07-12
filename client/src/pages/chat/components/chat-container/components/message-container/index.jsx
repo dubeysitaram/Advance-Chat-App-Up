@@ -42,6 +42,7 @@ const MessageContainer = () => {
         setSelectedChatMessages(response.data.messages);
       }
     };
+
     const getChannelMessages = async () => {
       const response = await apiClient.get(
         `${GET_CHANNEL_MESSAGES}/${selectedChatData._id}`,
@@ -72,6 +73,7 @@ const MessageContainer = () => {
   const downloadFile = async (url) => {
     setIsDownloading(true);
     setDownloadProgress(0);
+
     const response = await apiClient.get(`${HOST}/${url}`, {
       responseType: "blob",
       onDownloadProgress: (progressEvent) => {
@@ -80,6 +82,7 @@ const MessageContainer = () => {
         setDownloadProgress(percentCompleted);
       },
     });
+    
     const urlBlob = window.URL.createObjectURL(new Blob([response.data]));
     const link = document.createElement("a");
     link.href = urlBlob;
